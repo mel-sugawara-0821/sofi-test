@@ -1,4 +1,5 @@
-export default function About() {
+export default async function About() {
+    await new Promise(resolve => setTimeout(resolve, 1000));
     return (
         <main>
             <h1 className="font-bold mb-4">About</h1>
