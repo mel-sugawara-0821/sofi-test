@@ -13,8 +13,8 @@ aws ecr get-login-password --profile mel-aws --region ap-northeast-1 | docker lo
 docker tag sofi-test-app:latest 326730684696.dkr.ecr.ap-northeast-1.amazonaws.com/sofi-test-app
 docker push 326730684696.dkr.ecr.ap-northeast-1.amazonaws.com/sofi-test-app
 
-aws cloudformation create-stack --stack-name hoge --template-body file://.aws/cf.yml --profile mel-aws
-
+ECSリソースをcfで作成
+aws cloudformation create-stack --stack-name hoge --template-body file://.aws/cf.yml --profile mel-aws --capabilities CAPABILITY_NAMED_IAM
 
 {
     "repository": {
