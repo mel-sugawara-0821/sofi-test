@@ -56,7 +56,8 @@ jobs:
         with:
           task-definition: task-definition.json
           container-name: ${{ env.CONTAINER_NAME }}
-          image: ${{ steps.login-ecr.outputs.registry }}/sofi-app-cluster:latest
+          # image: ${{ steps.login-ecr.outputs.registry }}/sofi-app-cluster:latest
+          image: ${{ steps.image-tag.outputs.IMAGE_TAG }}
 
       - name: Deploy Amazon ECS task definition
         uses: aws-actions/amazon-ecs-deploy-task-definition@df9643053eda01f169e64a0e60233aacca83799a
