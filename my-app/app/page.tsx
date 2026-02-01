@@ -36,6 +36,7 @@ export default function Home() {
         <div className="mx-auto">
           <Image
             src={beast_img}
+            alt='beast'
             style={{margin: 'auto'}}
            />
         </div>
