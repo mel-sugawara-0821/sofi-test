@@ -77,3 +77,12 @@ jobs:
       - name: タスク定義のダウンロード
         run: |
           aws ecs describe-task-definition --task-definition ${{ env.ECS_TASK_DEFINITION }} --query taskDefinition > task-definition.json
+
+      - name: タスク定義に新しいイメージIDを記入
+        id: update-task-definition
+        uses: aws-actions/amazon-ecs-render-task-definition@v1
+        with:
+          task-definition: task-definition.json
+          container-name: ${{ env.CONTAINER_NAME }}
+          # image: ${{ steps.login-ecr.outputs.registry }}/my-image:latest
+          image: ${{ steps.login-ecr.outputs.registry }}/sofi-app-cluster:latest
