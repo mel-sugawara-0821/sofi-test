@@ -18,7 +18,7 @@ env:
 
   ECS_SERVICE: sofi-app-service # set this to your Amazon ECS service name
   ECS_CLUSTER: sofi-app-cluster # set this to your Amazon ECS cluster name
-  ECS_TASK_DEFINITION: task-definition
+  ECS_TASK_DEFINITION: sofi-app-task-define
                                                # file, e.g. .aws/task-definition.json
   CONTAINER_NAME: sofi-app-task-define           # set this to the name of the container in the
                                                # containerDefinitions section of your task definition
