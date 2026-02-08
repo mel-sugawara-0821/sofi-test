@@ -1,3 +1,5 @@
+import Link from 'next/link'
+import { getPostsByYearMonth } from "@/libs/post";
 import { notFound } from "next/navigation";
 
 type Props = {
@@ -30,10 +32,36 @@ export default async function Archive({params}: Props) {
         '11月',
         '12月',
     ]
+
+    const posts = getPostsByYearMonth(year, month);
     
     return (
         <div>
             <h2>{year}年{monthNames[monthNum - 1]}</h2>
+            {posts.length > 0 ? (
+                <div>
+                    {posts.map((post) =>
+                        (
+                            <article key={post.slug} className="bg-white rounded-lg shadow">
+                                <div className='flex items-center gap-2'>
+                                    <span className='bg-blue-100 text-sm'>{post.category}</span>
+                                    <time className='text-sm'>{new Date(post.date).toLocaleString('jp-Jp')}</time>
+                                </div>
+                                <h2 className='font-bold'>
+                                    <Link href={`/blog/${post.slug}`}>
+                                        {post.title}
+                                    </Link>
+                                </h2>
+                                <div className='text-gray-500'>
+                                    {post.abstract}
+                                </div>
+                            </article>
+                        )
+                    )}
+                </div>
+            ) : (
+                <div>記事が見つかりませんでした。</div>
+            )}
         </div>
     )
 }
