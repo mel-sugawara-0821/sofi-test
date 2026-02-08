@@ -28,7 +28,18 @@ export const posts: Post[] = [
         title: 'Next.jsについて',
         content: 'bodyですbodyですbodyです',
         abstract: 'abstractです',
-        date: '2026-02-01',
+        date: '2026-03-01',
+        category: 'programming',
+        author: '山田太郎',
+        tags: ['Next.js'],
+        readTime: 2
+    },
+    {
+        slug: 'about-hoge',
+        title: 'Next.jsについて',
+        content: 'bodyですbodyですbodyです',
+        abstract: 'abstractです',
+        date: '2026-04-01',
         category: 'programming',
         author: '山田太郎',
         tags: ['Next.js'],
@@ -49,4 +60,9 @@ export function getPostsByCategory(category: string): Post[] {
 // 全件取得する
 export function getAllPosts(): Post[] {
     return posts
+}
+
+export function getPostsByYearMonth(year: string, month: string) {
+    const yearMonth = year + '-' + month.padStart(2, '0');
+    return posts.filter((post) => post.date.substring(0, 7) === yearMonth);
 }
