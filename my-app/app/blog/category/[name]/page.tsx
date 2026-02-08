@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Metadata } from "next";
-import { getPostsByCategory } from "@/libs/post";
+import { getAllPosts, getPostsByCategory } from "@/libs/post";
 
 type Props = {
     params: {
@@ -20,7 +20,20 @@ export  async function generateMetadata({ params}: Props ): Promise<Metadata> {
 
 }
 
-export  default function Category() {
+// TODO: これなんだ？
+// 静的パスの生成
+export async function generateStaticParams() {
+    const posts = getAllPosts();
+    const categories = [
+        ...new Set(posts.map((post) => post.category.toLocaleLowerCase()))
+    ]
+
+    return categories.map((category) => ({
+        name: category
+    }))
+}
+
+export default function Category() {
     return (
         <div>カテゴリー</div>
     )

@@ -46,11 +46,7 @@ export function getPostsByCategory(category: string): Post[] {
     return posts.filter((post) => post.category.toLocaleLowerCase() === category.toLocaleLowerCase());
 }
 
-// TODO: 作成
 // 全件取得する
-// export function getAllPosts(slug: string): Post[] {
-//     return posts.find((post) => {
-//         console.log('post-------------')
-//         console.log(post)
-//     })
-// }
+export function getAllPosts(): Post[] {
+    return posts
+}
