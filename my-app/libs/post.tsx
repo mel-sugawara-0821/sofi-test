@@ -18,7 +18,7 @@ export const posts: Post[] = [
         content: 'bodyですbodyですbodyです',
         abstract: 'abstractです',
         date: '2026-02-01',
-        category: 'js',
+        category: 'programming',
         author: '山田太郎',
         tags: ['Next.js'],
         readTime: 2
@@ -29,7 +29,7 @@ export const posts: Post[] = [
         content: 'bodyですbodyですbodyです',
         abstract: 'abstractです',
         date: '2026-02-01',
-        category: 'js',
+        category: 'programming',
         author: '山田太郎',
         tags: ['Next.js'],
         readTime: 2
