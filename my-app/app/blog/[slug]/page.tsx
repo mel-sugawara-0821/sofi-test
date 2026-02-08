@@ -1,12 +1,12 @@
 type Props = {
-    params: {
-        slug: string
-    }
+    params: Promise<{ //Promiseを書く
+      slug: string;
+    }>;
 }
 
 async function getPostBySlug(slug: string) {
     const posts = {
-        'about-nextjs': {
+        'next-js': {
             title: 'Next.jsについて',
             body: 'bodyですbodyですbodyです',
             date: '2026-02-01',
@@ -32,7 +32,8 @@ async function getPostBySlug(slug: string) {
 }
 
 export default async function Post({ params}: Props ) {
-    const post = await getPostBySlug(params.slug);
+    const param = await params;
+    const post = await getPostBySlug(param.slug);
 
     if (!post) {
         return (
@@ -42,4 +43,14 @@ export default async function Post({ params}: Props ) {
             </div>
         )
     }
+
+    return (
+        <article>
+            <header>
+                <div>
+                    <span>{post.category}</span>
+                </div>
+            </header>
+        </article>
+    )
 }
