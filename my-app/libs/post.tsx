@@ -18,7 +18,7 @@ export const posts: Post[] = [
         content: 'bodyですbodyですbodyです',
         abstract: 'abstractです',
         date: '2026-02-01',
-        category: 'js',
+        category: 'programming',
         author: '山田太郎',
         tags: ['Next.js'],
         readTime: 2
@@ -29,7 +29,7 @@ export const posts: Post[] = [
         content: 'bodyですbodyですbodyです',
         abstract: 'abstractです',
         date: '2026-02-01',
-        category: 'js',
+        category: 'programming',
         author: '山田太郎',
         tags: ['Next.js'],
         readTime: 2
@@ -41,20 +41,12 @@ export function getPostBySlug(slug: string): Post | null {
     return posts.find((post) => post.slug === slug) || null
 }
 
-// TODO: 作成
 // カテゴリ別の記事を取得する
-// export function getPostByCategory(slug: string): Post | null {
-//     return posts.find((post) => {
-//         console.log('post-------------')
-//         console.log(post)
-//     })
-// }
+export function getPostsByCategory(category: string): Post[] {
+    return posts.filter((post) => post.category.toLocaleLowerCase() === category.toLocaleLowerCase());
+}
 
-// TODO: 作成
 // 全件取得する
-// export function getAllPosts(slug: string): Post[] {
-//     return posts.find((post) => {
-//         console.log('post-------------')
-//         console.log(post)
-//     })
-// }
+export function getAllPosts(): Post[] {
+    return posts
+}
