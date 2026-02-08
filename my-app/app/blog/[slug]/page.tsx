@@ -47,10 +47,17 @@ export default async function Post({ params}: Props ) {
     return (
         <article>
             <header>
-                <div>
+                <div className="flex justify-between">
                     <span>{post.category}</span>
+                    <time>{new Date(post.date).toLocaleString('jp-JP')}</time>
                 </div>
+                <h2 className="font-bold">
+                    {post.title}
+                </h2>
             </header>
+            <div>
+                {post.body}
+            </div>
         </article>
     )
 }
