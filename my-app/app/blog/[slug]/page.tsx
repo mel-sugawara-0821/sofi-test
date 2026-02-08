@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { getPostBySlug  } from '@/libs/post';
 
 // NOTE: Metadata
 export  async function generateMetadata({ params}: Props ): Promise<Metadata> {
@@ -28,33 +29,6 @@ type Props = {
     }>;
 }
 
-async function getPostBySlug(slug: string) {
-    const posts = {
-        'next-js': {
-            title: 'Next.jsについて',
-            body: 'bodyですbodyですbodyです',
-            date: '2026-02-01',
-            category: 'js',
-            author: '山田太郎'
-        },
-        'about-ts': {
-            title: 'TSについて',
-            body: 'bodyですbodyですbodyです',
-            date: '2026-02-01',
-            category: 'js',
-            author: '山田太郎'
-        },
-        'about-js': {
-            title: 'JSについて',
-            body: 'bodyですbodyですbodyです',
-            date: '2026-02-01',
-            category: 'js',
-            author: '山田太郎'
-        }
-    }
-    return posts[slug as keyof typeof posts] || null
-}
-
 export default async function Post({ params}: Props ) {
     const param = await params;
     const post = await getPostBySlug(param.slug);
@@ -80,7 +54,7 @@ export default async function Post({ params}: Props ) {
                 </h2>
             </header>
             <div>
-                {post.body}
+                {post.content}
             </div>
         </article>
     )
