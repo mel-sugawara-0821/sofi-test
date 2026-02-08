@@ -1,3 +1,27 @@
+import { Metadata } from 'next';
+
+// NOTE: Metadata
+export  async function generateMetadata({ params}: Props ): Promise<Metadata> {
+    const param = await params;
+    const post = await getPostBySlug(param.slug);
+
+    if (!post) {
+        return {
+            title: '記事が見つかりません'
+        }
+    }
+
+    return {
+        title: `${post.title} | Dosaのブログ`,
+        description: 'descriptionです',
+        openGraph: {
+            title: post.title,
+            description: 'descriptionです',
+            type: 'article'
+        }
+    }
+}
+
 type Props = {
     params: Promise<{ //Promiseを書く
       slug: string;
