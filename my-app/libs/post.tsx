@@ -43,18 +43,18 @@ export function getPostBySlug(slug: string): Post | null {
 
 // TODO: 作成
 // カテゴリ別の記事を取得する
-export function getPostByCategory(slug: string): Post | null {
-    return posts.find((post) => {
-        console.log('post-------------')
-        console.log(post)
-    })
-}
+// export function getPostByCategory(slug: string): Post | null {
+//     return posts.find((post) => {
+//         console.log('post-------------')
+//         console.log(post)
+//     })
+// }
 
 // TODO: 作成
 // 全件取得する
-export function getAllPosts(slug: string): Post[] {
-    return posts.find((post) => {
-        console.log('post-------------')
-        console.log(post)
-    })
-}
+// export function getAllPosts(slug: string): Post[] {
+//     return posts.find((post) => {
+//         console.log('post-------------')
+//         console.log(post)
+//     })
+// }
