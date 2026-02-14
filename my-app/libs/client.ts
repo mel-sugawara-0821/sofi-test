@@ -1,6 +1,3 @@
-console.log('domain--------')
-console.log(process.env.MICROCMS_SERVICE_DOMAIN)
-
 import { createClient } from 'microcms-js-sdk';
 
 export type Blog = {
@@ -23,14 +20,9 @@ export const client = createClient({
 
 // ブログ一覧を取得
 export const getBlogs = async () => {
-    console.log('getBlogs----------')
-
     const blogs = await client.getList<Blog>({
         endpoint: "selfcare-test"
     });
-    console.log('blogs-----')
-    console.log(blogs)
-
 
     return blogs;
 }
