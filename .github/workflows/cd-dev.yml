@@ -47,7 +47,7 @@ jobs:
           docker build \
             -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG . \
             --build-arg MICROCMS_SERVICE_DOMAIN=$MICROCMS_SERVICE_DOMAIN \
-            --build-arg MICROCMS_API_KEY=$MICROCMS_API_KEY \
+            --build-arg MICROCMS_API_KEY=$MICROCMS_API_KEY
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
           echo "image=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG" >> $GITHUB_OUTPUT
           echo ${{ steps.build-image.outputs.image }}
