@@ -37,12 +37,17 @@ jobs:
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           IMAGE_TAG: ${{ github.sha }}
+          MICROCMS_SERVICE_DOMAIN: ${{ secrets.MICROCMS_SERVICE_DOMAIN }}
+          MICROCMS_API_KEY: ${{ secrets.MICROCMS_API_KEY }}
         run: |
           # Build a docker container and
           # push it to ECR so that it can
           # be deployed to ECS.
           cd ./my-app/
-          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+          docker build \
+            -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG . \
+            --build-arg MICROCMS_SERVICE_DOMAIN=$MICROCMS_SERVICE_DOMAIN \
+            --build-arg MICROCMS_API_KEY=$MICROCMS_API_KEY
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
           echo "image=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG" >> $GITHUB_OUTPUT
           echo ${{ steps.build-image.outputs.image }}
