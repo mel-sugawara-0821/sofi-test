@@ -1,5 +1,6 @@
 import { createClient } from 'microcms-js-sdk';
 
+// TODO: typesディレクトリ作成？
 export type Blog = {
     title: string;
     body: string;   
