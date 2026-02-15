@@ -1,47 +1,31 @@
-// import { getDetail,getBlogs } from "@/../libs/client";
-// import Link from "next/link"
+import { getDetail } from "@/libs/client";
 
-// export async function generateStaticParams(){
-//   const { contents } = await getBlogs();
+// TODO: typesディレクトリ作成？
+type Props = {
+    params: Promise<{ //Promiseを書く
+      id: string;
+    }>;
+}
 
-//   const paths = contents.map((blog)=>{
-//     return {
-//       blogId: blog.id,
-//     };
-//   });
-//   return [...paths];
-// }
+export default async function SelfCareShow({params}: Props) {
+    const resolved_params = await params;
+    const post = await getDetail(resolved_params.id);
 
-// export default async function StaticDetailPage({
-//   params : { blogId },
-// }: {
-//   params: { blogId : string};
-// }) {
-//   const blog = await getDetail(blogId);
+    // TODO: エラーハンドリング
+    if (!post) {
+        return (
+            <div>
+                <h2>記事が見つかりません</h2>
+                <p className="text-gray-500">指定された記事が存在しない</p>
+            </div>
+        )
+    }
 
-//   return(
-//     <>
-//         <p>{blog.title}</p>
-//         <div
-//           dangerouslySetInnerHTML={{
-//             __html: `${blog.body}`,
-//           }}
-//         />
-//     </>
-//   )
-// }
-
-export default async function StaticDetailPage({
-    params : { pageId }
-}: {
-    params: { pageId : string}
-}) {
-    console.log('pageId-----')
-    console.log(pageId)
     return (
-        <>
-            <h2>セルフケアtest詳細</h2>
-        </>
+        <article>
+            <h2 className="font-bold">{post.title}</h2>
+            <p>{post.body}</p>
+        </article>
     )
 }
 

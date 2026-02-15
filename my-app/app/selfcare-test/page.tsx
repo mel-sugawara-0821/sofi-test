@@ -16,6 +16,7 @@ export default async function SelfCareIndex() {
             <ul>
                 {contents.map((blog) => (
                     <li key={blog.id}>
+                        {/* TODO: urlも動的生成したい */}
                         <Link href={`/selfcare-test/${blog.id}`}>{blog.title}</Link>
                     </li>
                 ))}

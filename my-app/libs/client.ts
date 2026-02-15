@@ -30,9 +30,10 @@ export const getBlogs = async () => {
 
 // ブログの詳細を取得
 export const getDetail = async (contentId: string) => {
-    const blog = await client.getListDetail<Blog>({
-        endpoint: "blogs",
+    const post = await client.getListDetail<Blog>({
+        // TODO: endpointも動的に渡す
+        endpoint: "selfcare-test",
         contentId,
     });
-    return blog;
+    return post;
 };
