@@ -1,13 +1,7 @@
 import { getDetail } from "@/libs/client";
+import { PageId } from "@/types/ui/types"
 
-// TODO: typesディレクトリ作成？
-type Props = {
-    params: Promise<{ //Promiseを書く
-      id: string;
-    }>;
-}
-
-export default async function SelfCareShow({params}: Props) {
+export default async function SelfCareShow({params}: PageId) {
     const resolved_params = await params;
     const post = await getDetail(resolved_params.id);
 
