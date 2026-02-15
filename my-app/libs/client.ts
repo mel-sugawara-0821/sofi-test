@@ -1,4 +1,5 @@
 import { createClient } from 'microcms-js-sdk';
+import { Post } from '@/types/api/types';
 
 // TODO: typesディレクトリ作成？
 export type Blog = {
@@ -29,11 +30,12 @@ export const getBlogs = async () => {
 }
 
 // ブログの詳細を取得
-export const getDetail = async (contentId: string) => {
-    const post = await client.getListDetail<Blog>({
+export async function getDetail(contentId: string): Promise<Post> {
+    const post = await client.getListDetail<Post>({
         // TODO: endpointも動的に渡す
         endpoint: "selfcare-test",
         contentId,
     });
+
     return post;
-};
+}
