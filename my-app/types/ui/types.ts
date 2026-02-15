@@ -1,4 +1,4 @@
-type PageId = {
+export type PageId = {
     params: Promise<{
       id: string;
     }>;
