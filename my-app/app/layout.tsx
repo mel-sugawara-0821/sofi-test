@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import type { Metadata } from "next";
 import "./globals.css"
+import Navigation from '@/components/Navigation';
 
 
 export const metadata: Metadata = {
@@ -17,7 +18,7 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <body>
-        <header className='flex justify-around bg-gray-100 shadow-sm text-gray-600'>
+        {/* <header className='flex justify-around bg-gray-100 shadow-sm text-gray-600'>
           <nav>
             <div className='flex justify-around w-100'>
               <Link href="/">
@@ -34,7 +35,8 @@ export default function RootLayout({
               </Link>
             </div>
           </nav>
-        </header>
+        </header> */}
+        <Navigation />
         <main>
           {children}
         </main>
