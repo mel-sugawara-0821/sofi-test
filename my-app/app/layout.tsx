@@ -2,6 +2,7 @@ import Link from 'next/link'
 import type { Metadata } from "next";
 import "./globals.css"
 import Navigation from '@/components/Navigation';
+import AdvancedLink from '@/components/AdvancedLink';
 
 
 export const metadata: Metadata = {
@@ -37,6 +38,7 @@ export default function RootLayout({
           </nav>
         </header> */}
         <Navigation />
+        <AdvancedLink />
         <main>
           {children}
         </main>
