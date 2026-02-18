@@ -6,9 +6,6 @@ import { useState } from "react";
 
 export default function Navigation() {
     const path_name = usePathname();
-    console.log('path_name-----')
-    console.log(path_name)
-
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
     const navItems = [
@@ -18,13 +15,12 @@ export default function Navigation() {
         { href: '/contact', label: 'Contact'},
     ]
 
-    const isActive = (href: string): boolean | null => {
+    const isActive = (href: string): boolean => {
         if (href === '/') {
             return path_name === href;
         }
-        console.log('href-----')
-        console.log(href)
-        return path_name.startsWith(href)
+        if (path_name) return path_name.startsWith(href);
+        return false;
     }
 
     return (
