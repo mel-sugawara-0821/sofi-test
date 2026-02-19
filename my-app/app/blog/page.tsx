@@ -1,3 +1,5 @@
+import SearchAndNavigation from "@/components/SearchAndNavigation"
+
 type Post = {
     id: string,
     title: string,
@@ -34,6 +36,7 @@ export default function Blog() {
                 <div>
                     <h1>タイトル</h1>
                 </div>
+                <SearchAndNavigation />
             </div>
             <div>
                 {posts.map((post) => (
