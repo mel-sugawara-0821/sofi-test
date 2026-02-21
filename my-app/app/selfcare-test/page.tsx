@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { getBlogs } from '@/libs/client';
 
+import styles from './selfcares.module.scss'
+
 export default async function SelfCareIndex() {
     const { contents }  = await getBlogs();
 
@@ -11,7 +13,7 @@ export default async function SelfCareIndex() {
 
     // TODO: ページネーション
     return (
-        <>
+        <div className={styles.selfcare}>
             <h2>セルフケアtest一覧</h2>
             <ul>
                 {contents.map((blog) => (
@@ -21,6 +23,6 @@ export default async function SelfCareIndex() {
                     </li>
                 ))}
             </ul>
-        </>
+        </div>
     )
 }
