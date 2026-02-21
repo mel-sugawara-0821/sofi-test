@@ -23,7 +23,7 @@ export default  function Test(props: any) {
                     },
                 }}            
             >
-                {props.contents.map((blog) => (
+                {props.contents.map((blog: any) => (
                     <SplideSlide key={blog.id}>
                         {/* TODO: urlも動的生成したい */}
                         <Link href={`/selfcare-test/${blog.id}`}>{blog.title}</Link>
