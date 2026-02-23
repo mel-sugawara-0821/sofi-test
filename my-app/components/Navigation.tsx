@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import Bread from "./Bread";
 
 export default function Navigation() {
     const path_name = usePathname();
@@ -68,6 +69,7 @@ export default function Navigation() {
                     </div>
                 )}
             </nav>
+            <Bread/>
         </header>
     )
 }
