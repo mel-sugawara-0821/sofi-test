@@ -2,6 +2,7 @@ import Link from 'next/link'
 import type { Metadata } from "next";
 import "./globals.css"
 
+
 export const metadata: Metadata = {
   title: "Title",
   description: "Description",
@@ -9,9 +10,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children
-}: {
-  children: React.ReactNode
-}) {
+}: Readonly<{
+  children: React.ReactNode;
+}>
+) {
   return (
     <html lang="ja">
       <body>
@@ -20,6 +22,9 @@ export default function RootLayout({
             <div className='flex justify-around w-100'>
               <Link href="/">
                 Home
+              </Link>
+              <Link href="/blog">
+                Blog
               </Link>
               <Link href="/about">
                 About
